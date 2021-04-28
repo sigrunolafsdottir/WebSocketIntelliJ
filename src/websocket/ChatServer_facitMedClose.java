@@ -6,9 +6,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@ServerEndpoint("/ws")
-public class ChatServer {
-    //håller användarid och användarnamn
+//@ServerEndpoint("/ws")
+public class ChatServer_facitMedClose {
+ /*   //håller användarid och användarnamn
     private Map<String, String> usernames = new HashMap<String, String>();
 
     @OnOpen
@@ -19,8 +19,14 @@ public class ChatServer {
 
     @OnClose
     public void close(Session session) throws IOException, EncodeException {
-
-
+        String userId = session.getId();
+        if (usernames.containsKey(userId)) {
+            String username = usernames.get(userId);
+            usernames.remove(userId);
+            for (Session peer : session.getOpenSessions())
+                peer.getBasicRemote().sendText("(Server): " + username
+                        + " left the chat room.");
+        }
     }
 
     @OnMessage
@@ -45,4 +51,6 @@ public class ChatServer {
             }
         }
     }
+    */
+
 }
